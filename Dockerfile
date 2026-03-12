@@ -2,4 +2,10 @@ FROM ctfd/ctfd:latest
 
 RUN pip install psycopg2-binary
 
-EXPOSE 8000
+ENV WORKERS=1
+ENV LOG_FOLDER=/opt/CTFd/logs
+
+CMD gunicorn "CTFd:create_app()" \
+    --bind 0.0.0.0:${PORT:-8000} \
+    --workers 1 \
+    --threads 4
