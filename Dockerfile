@@ -1,6 +1,6 @@
 FROM ctfd/ctfd:latest
 
-RUN pip install psycopg2-binary
+RUN pip install psycopg2-binary pg8000
 
 ENV WORKERS=1
 ENV LOG_FOLDER=/opt/CTFd/logs
